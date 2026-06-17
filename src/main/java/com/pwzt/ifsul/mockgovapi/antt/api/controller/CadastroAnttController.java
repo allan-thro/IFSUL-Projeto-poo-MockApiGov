@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RequestMapping("/api/antt/cadastro")
 @RestController
 
@@ -27,8 +29,13 @@ public class CadastroAnttController {
     }
 
     @PostMapping("/veiculo")
-    public ResponseEntity<ResponseCadastroVeiculoAntt> cadastrarVeiculoAntt(@RequestBody String veiculo){
-        return null;
+    public ResponseEntity<ResponseCadastroVeiculoAntt> cadastrarVeiculoAntt(
+            @RequestParam String placa,
+            @RequestParam String rntrc,
+            @RequestParam("capacidade_maxima") BigDecimal capacidadeMaxima
+            ){
+        ResponseCadastroVeiculoAntt response = cadastroAnttService.cadastrarVeiculoAntt(placa, rntrc, capacidadeMaxima);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
 }

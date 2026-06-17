@@ -11,9 +11,6 @@ public class RequestCadastroVeiculoAntt {
 
     private String placa;
 
-    @JsonProperty("tipo_carroceria")
-    private TipoCarroceria tipoCarroceria;
-
     @JsonProperty("capacidade_maxima")
     private String capacidadeMaxima;
 

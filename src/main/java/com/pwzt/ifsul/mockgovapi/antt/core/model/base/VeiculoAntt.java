@@ -1,6 +1,7 @@
 package com.pwzt.ifsul.mockgovapi.antt.core.model.base;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
         @Index(columnList = "VEI_ANTT_PLACA")
 })
 @Entity
+@Data
 
 public class VeiculoAntt {
 
@@ -19,10 +21,6 @@ public class VeiculoAntt {
 
     @Column(name = "VEI_ANTT_PLACA")
     private String placa;
-
-    @Convert(converter = TipoCarroceriaConverter.class)
-    @Column(name = "VEI_ANTT_TIPOCARROCERIA")
-    private TipoCarroceria tipoCarroceria;
 
     @Column(name = "VEI_ANTT_CAPACIDADEMAXIMA", scale = 15, precision = 2)
     private BigDecimal capacidadeMaxima;

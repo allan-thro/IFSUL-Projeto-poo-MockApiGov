@@ -2,6 +2,7 @@ package com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cadastro;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

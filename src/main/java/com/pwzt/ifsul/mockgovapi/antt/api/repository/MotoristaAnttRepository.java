@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface MotoristaAnttRepository extends JpaRepository<MotoristaAntt, Long> {
 
     Optional<MotoristaAntt> findByCpf(String cpf);
+    Optional<MotoristaAntt> findByRntrc(String rntrc);
 
 }
