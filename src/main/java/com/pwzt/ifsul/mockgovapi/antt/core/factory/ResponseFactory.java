@@ -1,9 +1,12 @@
 package com.pwzt.ifsul.mockgovapi.antt.core.factory;
 
+import com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cadastro.ResponseCadastroBaseAntt;
 import com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cadastro.ResponseCadastroMotoristaAntt;
 import com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cadastro.ResponseCadastroVeiculoAntt;
 import com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cte.ResponseCTe;
 import com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cte.ResponseCTeEmissao;
+import com.pwzt.ifsul.mockgovapi.antt.core.exception.AnttValidationException;
+import com.pwzt.ifsul.mockgovapi.antt.core.exception.CTeValidationException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -52,4 +55,23 @@ public class ResponseFactory {
         return response;
     }
 
+    public static ResponseCadastroBaseAntt createResponseAnttValidationException(AnttValidationException e){
+        ResponseCadastroBaseAntt response = new ResponseCadastroBaseAntt();
+
+        response.setMotivoAntt(e.getMessage());
+        response.setCodigoStatusAntt("400");
+        response.setTimestamp(LocalDateTime.now());
+
+        return response;
+    }
+
+    public static ResponseCTeEmissao createResponseCTeValidationException(CTeValidationException e){
+        ResponseCTeEmissao response = new ResponseCTeEmissao();
+
+        response.setMensagem(e.getErroList());
+        response.setMotivo(e.getMessage());
+        response.setCodigo("400");
+
+        return response;
+    }
 }
