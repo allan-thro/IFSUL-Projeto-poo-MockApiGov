@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Table(name = "GBL_ANTT_MOT", indexes = {
+@Table(name = "GBL_ANTT_VEI", indexes = {
         @Index(columnList = "VEI_ANTT_RNTRC"),
         @Index(columnList = "VEI_ANTT_PLACA")
 })
@@ -22,7 +22,7 @@ public class VeiculoAntt {
     @Column(name = "VEI_ANTT_PLACA")
     private String placa;
 
-    @Column(name = "VEI_ANTT_CAPACIDADEMAXIMA", scale = 15, precision = 2)
+    @Column(name = "VEI_ANTT_CAPACIDADEMAXIMA", precision = 15, scale = 2)
     private BigDecimal capacidadeMaxima;
 
     @Column(name = "VEI_ANTT_RNTRC")

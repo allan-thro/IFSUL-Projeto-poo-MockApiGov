@@ -2,7 +2,7 @@ package com.pwzt.ifsul.mockgovapi.antt.api.controller;
 
 import com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cadastro.ResponseCadastroMotoristaAntt;
 import com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cadastro.ResponseCadastroVeiculoAntt;
-import com.pwzt.ifsul.mockgovapi.antt.api.service.CadastroAnttService;
+import com.pwzt.ifsul.mockgovapi.antt.api.service.AnttCadastroService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,17 +14,17 @@ import java.math.BigDecimal;
 @RestController
 
 @AllArgsConstructor
-public class CadastroAnttController {
+public class AnttCadastroController {
 
 
-    private final CadastroAnttService cadastroAnttService;
+    private final AnttCadastroService anttCadastroService;
 
     @PostMapping("/motorista")
     public ResponseEntity<ResponseCadastroMotoristaAntt> cadastrarMotoristaAntt(
             @RequestParam String cpf,
             @RequestParam String nome
     ){
-        ResponseCadastroMotoristaAntt response = cadastroAnttService.cadastrarMotoristaAntt(cpf, nome);
+        ResponseCadastroMotoristaAntt response = anttCadastroService.cadastrarMotoristaAntt(cpf, nome);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -34,7 +34,7 @@ public class CadastroAnttController {
             @RequestParam String rntrc,
             @RequestParam("capacidade_maxima") BigDecimal capacidadeMaxima
             ){
-        ResponseCadastroVeiculoAntt response = cadastroAnttService.cadastrarVeiculoAntt(placa, rntrc, capacidadeMaxima);
+        ResponseCadastroVeiculoAntt response = anttCadastroService.cadastrarVeiculoAntt(placa, rntrc, capacidadeMaxima);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

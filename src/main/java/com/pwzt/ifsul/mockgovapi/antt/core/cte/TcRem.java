@@ -1,0 +1,29 @@
+package com.pwzt.ifsul.mockgovapi.antt.core.cte;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
+
+@XmlAccessorType(XmlAccessType.FIELD)
+public class TcRem {
+
+    @JsonProperty("cnpj")
+    private String CNPJ;
+
+    @JsonProperty("inscricao_estadual")
+    private String IE;
+
+    @JsonProperty("nome_remetente")
+    private String xNome;
+
+    @XmlElement(name = "enderReme")
+    @JsonProperty("endereco_remetente")
+    private TcEndereco tcEndereco;
+
+}

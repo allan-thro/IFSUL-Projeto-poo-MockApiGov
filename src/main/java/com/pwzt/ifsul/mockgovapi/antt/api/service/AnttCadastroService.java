@@ -5,7 +5,7 @@ import com.pwzt.ifsul.mockgovapi.antt.api.dto.response.cadastro.ResponseCadastro
 import com.pwzt.ifsul.mockgovapi.antt.api.repository.InjectionProvider;
 import com.pwzt.ifsul.mockgovapi.antt.api.repository.VeiculoAnttRepository;
 import com.pwzt.ifsul.mockgovapi.antt.core.exception.AnttValidationException;
-import com.pwzt.ifsul.mockgovapi.antt.core.factory.ResponseAnttFactory;
+import com.pwzt.ifsul.mockgovapi.antt.core.factory.ResponseFactory;
 import com.pwzt.ifsul.mockgovapi.antt.core.model.base.MotoristaAntt;
 import com.pwzt.ifsul.mockgovapi.antt.core.model.base.VeiculoAntt;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,11 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
-public class CadastroAnttService {
+public class AnttCadastroService {
 
     private final VeiculoAnttRepository veiculoAnttRepository;
 
-    public CadastroAnttService(VeiculoAnttRepository veiculoAnttRepository) {
+    public AnttCadastroService(VeiculoAnttRepository veiculoAnttRepository) {
         this.veiculoAnttRepository = veiculoAnttRepository;
     }
 
@@ -37,7 +37,7 @@ public class CadastroAnttService {
 
         InjectionProvider.getMotoristaAnttRepository().save(motorista);
 
-        return ResponseAnttFactory.createResponseCadastroMotorista(rntrc, cpf, nome);
+        return ResponseFactory.createResponseCadastroMotorista(rntrc, cpf, nome);
     }
 
     public ResponseCadastroVeiculoAntt cadastrarVeiculoAntt(String placa, String rntrc, BigDecimal capacidadeMaxima){
@@ -56,7 +56,7 @@ public class CadastroAnttService {
 
         InjectionProvider.getVeiculoAnttRepository().save(veiculo);
 
-        return ResponseAnttFactory.createResponseCadastroVeiculo(placa, rntrc, capacidadeMaxima);
+        return ResponseFactory.createResponseCadastroVeiculo(placa, rntrc, capacidadeMaxima);
     }
 
     private String createRntrc(){
